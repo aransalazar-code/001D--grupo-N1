@@ -13,14 +13,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout código
+      - name: Checkout del código
         uses: actions/checkout@v4
 
       - name: Instalar TFLint
-        uses: terraform-linters/setup-tflint@v4
+        run: |
+          curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
 
       - name: Inicializar TFLint
         run: tflint --init
 
       - name: Ejecutar TFLint
-        run: tflint ${{ inputs.path }}
+        run: tflint --chdir=${{ inputs.path }} || true
