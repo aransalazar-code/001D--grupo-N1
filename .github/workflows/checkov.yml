@@ -1,0 +1,23 @@
+name: Checkov Security Scan
+
+on:
+  workflow_call:
+    inputs:
+      path:
+        required: true
+        type: string
+
+jobs:
+  checkov:
+    name: Ejecutar Checkov
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Instalar Checkov
+        run: pip install checkov
+
+      - name: Ejecutar Checkov
+        run: checkov -d ${{ inputs.path }}
