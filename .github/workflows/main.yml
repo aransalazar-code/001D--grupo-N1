@@ -1,0 +1,32 @@
+name: Main Terraform Trigger
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  static-analysis:
+    name: Análisis Estático
+    uses: ./.github/workflows/terraform.yml
+    with:
+      path: .
+
+  security-analysis:
+    name: Análisis de Seguridad
+    needs: static-analysis
+    uses: ./.github/workflows/checkov.yml
+    with:
+      path: .
+
+  terraform-validation:
+    name: Validación Terraform
+    needs: security-analysis
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+      - name: Terraform Init y Validate
+        run: |
+          terraform init -backend=false
+          terraform validate
