@@ -5,6 +5,6 @@ resource "aws_instance" "web" {
   vpc_security_group_ids = [aws_security_group.ssh_access.id]
 
   tags = {
-    Name = "001D-duocapp-ec2"
+    Name = "AUY1105-duocapp-ec2"
   }
 }
