@@ -63,3 +63,4 @@ resource "aws_internet_gateway" "igw" {
     Name = "AUY1105-duocapp-igw"
   }
 }
+#pequeño comentario

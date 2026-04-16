@@ -10,3 +10,4 @@ terraform {
 provider "aws" {
   region = "us-east-1"
 }
+#dicen que la fe es lo ultimo que se pierde
