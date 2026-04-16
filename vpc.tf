@@ -5,7 +5,7 @@ resource "aws_vpc" "main" {
   enable_dns_hostnames = true
 
   tags = {
-    Name = "001D-duocapp-vpc" 
+    Name = "AUY1105-duocapp-vpc" 
   }
 }
 
@@ -16,7 +16,7 @@ resource "aws_subnet" "public" {
   map_public_ip_on_launch = true
 
   tags = {
-    Name = "001D-duocapp-subnet-pub"
+    Name = "AUY1105-duocapp-subnet-pub"
   }
 }
 
@@ -26,13 +26,13 @@ resource "aws_subnet" "private" {
   cidr_block = "10.1.2.0/24"
 
   tags = {
-    Name = "001D-duocapp-subnet-priv"
+    Name = "AUY1105-duocapp-subnet-priv"
   }
 }
 
 # Grupos de Seguridad: Permitir solo SSH entrante [cite: 59, 60]
 resource "aws_security_group" "ssh_access" {
-  name        = "001D-duocapp-sg"
+  name        = "AUY1105-duocapp-sg"
   description = "Permitir trafico SSH"
   vpc_id      = aws_vpc.main.id
 
@@ -51,7 +51,7 @@ resource "aws_security_group" "ssh_access" {
   }
 
   tags = {
-    Name = "001D-duocapp-sg"
+    Name = "AUY1105-duocapp-sg"
   }
 }
 
@@ -60,6 +60,6 @@ resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.main.id
 
   tags = {
-    Name = "001D-duocapp-igw"
+    Name = "AUY1105-duocapp-igw"
   }
 }
