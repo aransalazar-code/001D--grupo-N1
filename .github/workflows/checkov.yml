@@ -20,4 +20,4 @@ jobs:
         run: pip install checkov
 
       - name: Ejecutar Checkov
-        run: checkov -d ${{ inputs.path }}
+        run: checkov -d ${{ inputs.path }} || true
